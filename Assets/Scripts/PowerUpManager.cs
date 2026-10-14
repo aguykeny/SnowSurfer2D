@@ -1,47 +1,39 @@
-using System;
 using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
     [SerializeField] private PowerUpScriptableObject powerUpData;
-    PlayerController playerController;
-    SpriteRenderer powerUpSpriteRenderer;
-    float timeLeft;
+    [SerializeField] private ParticleSystem pickupEffect;
 
-    private void Start()
-    {
-        playerController = FindAnyObjectByType<PlayerController>();
-        powerUpSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        timeLeft = powerUpData.TimeLimit;
-    }
+    private bool isCollected = false;
 
-    private void Update()
-    {
-       CountDownPowerUpTime();
-    }
+    public PowerUpScriptableObject PowerUpData { get => powerUpData; set => powerUpData = value; }
 
-    private void CountDownPowerUpTime()
+    public void Init(PowerUpScriptableObject data)
     {
-       if(powerUpSpriteRenderer.enabled == false)
-       {
-           if (timeLeft > 0)
-           {
-               timeLeft -= Time.deltaTime;
-               if(timeLeft <= 0)
-               {
-                   playerController.DeactivatePowerUp(powerUpData);
-               }
-           }
-       }
+        powerUpData = data;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && powerUpSpriteRenderer.enabled)
+        if (other.CompareTag("Player") && !isCollected)
         {
-            powerUpSpriteRenderer.enabled = false;
-            playerController.ApplyPowerUp(powerUpData);
+            isCollected = true;
+            PlayerController playerController = other.GetComponent<PlayerController>() ?? FindAnyObjectByType<PlayerController>();
+
+            if (playerController != null && powerUpData != null)
+            {
+                playerController.ApplyPowerUp(powerUpData);
+            }
+
+            if (pickupEffect != null)
+            {
+                pickupEffect.Play();
+                pickupEffect.transform.SetParent(null);
+                Destroy(pickupEffect.gameObject, pickupEffect.main.duration);
+            }
+
+            Destroy(gameObject);
         }
     }
-    
 }

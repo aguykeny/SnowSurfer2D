@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 12940414}
   - component: {fileID: 12940413}
   - component: {fileID: 12940412}
+  - component: {fileID: 12940417}
   m_Layer: 6
   m_Name: Level Sprite Shape
   m_TagString: Untagged
@@ -139,6 +140,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &12940417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12940411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6c2862032f48c8beef8948b592b67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelTrackSetup
+  levelOverride: 1
+  autoBuildOnStart: 0
+  speedShortData: {fileID: 11400000, guid: 14edfe19c6184084096b2188aadee986, type: 2}
+  speedLongData: {fileID: 11400000, guid: e980ae5beb5a8914daec55a1cb8704d5, type: 2}
+  shieldData: {fileID: 11400000, guid: a802aa43614e412bae21f7377300b729, type: 2}
+  collectiblePrefab: {fileID: 100000, guid: a35a6b543aa1458a8a95f06c2794b194, type: 3}
+  powerUpPrefab: {fileID: 0}
 --- !u!252 &12940412
 SurfaceEffector2D:
   m_ObjectHideFlags: 0
@@ -151,12 +171,12 @@ SurfaceEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Speed: 25
+  m_Speed: 22
   m_SpeedVariation: 0
   m_ForceScale: 1
   m_UseContactForce: 0
   m_UseFriction: 1
-  m_UseBounce: 1
+  m_UseBounce: 0
 --- !u!68 &12940413
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1256,8 +1276,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292772465}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.92, y: 1.42, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.1305262, w: 0.9914449}
+  m_LocalPosition: {x: -20.5, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1265,7 +1285,7 @@ Transform:
   - {fileID: 1361504538}
   - {fileID: 1870400727}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
 --- !u!70 &292772467
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1328,7 +1348,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &292772469
 MonoBehaviour:
@@ -2646,12 +2666,12 @@ GameObject:
   - component: {fileID: 1007783212}
   - component: {fileID: 1007783213}
   m_Layer: 0
-  m_Name: Charcter_0
+  m_Name: DuckSkate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1007783212
 Transform:
   m_ObjectHideFlags: 0
@@ -2661,8 +2681,8 @@ Transform:
   m_GameObject: {fileID: 1007783211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2300001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1128502216}
@@ -2716,12 +2736,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3809319501612307451, guid: b8747dff019bd444a96bd4e8b7ee816a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1c45a7e10824b26a57891234567890a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.97, y: 3.31}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2797,7 +2817,7 @@ Transform:
   m_GameObject: {fileID: 1096577812}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.9300003, y: 6.56, z: -10}
+  m_LocalPosition: {x: -20.5, y: 6.56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
